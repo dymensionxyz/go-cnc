@@ -61,10 +61,10 @@ func (c *Client) SubmitPFB(ctx context.Context, namespace Namespace, data []byte
 		SetError(&rpcErr).
 		Post(submitPFBEndpoint)
 	if err != nil {
-		return nil, err
+		return &res, err
 	}
 	if rpcErr != "" {
-		return nil, errors.New(rpcErr)
+		return &res, errors.New(rpcErr)
 	}
 	return &res, nil
 }
