@@ -60,10 +60,10 @@ func (c *Client) SubmitPFD(ctx context.Context, namespaceID [8]byte, data []byte
 		SetError(&rpcErr).
 		Post(submitPFDEndpoint)
 	if err != nil {
-		return nil, err
+		return &res, err
 	}
 	if rpcErr != "" {
-		return nil, errors.New(rpcErr)
+		return &res, errors.New(rpcErr)
 	}
 	return &res, nil
 }
